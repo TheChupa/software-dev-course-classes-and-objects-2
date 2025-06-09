@@ -6,29 +6,39 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BetterStudentManager {
     public List<Student> students = new ArrayList<>();
 
     public void addStudent(String name, double grade) {
-        // This method should add a new student to the list of students
+        // Add new student with Java Class
+        Student student = new Student();
+        student.name = name;
+        student.grade = grade;
+        students.add(student);
+
     }
 
     public void removeStudent(String name) {
-        // This method should remove the student with the given name from the list of students
+        // Loop through the students ArrayList at each index and compares the name and then removes it if equal to it.
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).name.equals(name)) {
+                students.remove(i);
+
+            }
+        }
     }
 
     public String getStudentList() {
-        // This method should return a string with each student's name and grade
-        // separated by a space, with each student separated by a newline character ('\n')
-        // E.g.
-        // John 90.9
-        // Jane 88.3
-        //
-        // You will need to use a String or StringBuilder to build the result by
-        // looping through the list of students
-        //
-        // Replace the following line with your implementation
-        return null;
+   // Stringbuiler is the new student list, then append the value that the object represents to it. then return it as a string
+        StringBuilder studentList = new StringBuilder();
+
+        for (Student student : students) {
+
+            studentList.append(student.name).append(" ").append(student.grade).append("\n");
+
+        }
+        return studentList.toString();
     }
 }
